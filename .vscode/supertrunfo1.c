@@ -26,11 +26,10 @@ int main() {
     printf("Codigo da Carta (ex: A01): ");
     scanf("%s", codigo1);
     printf("Nome da Cidade: ");
-    getchar();
-    fgets(cidade1, 100, stdin);
+    scanf("%s", cidade1);
     printf("Populacao: ");
     scanf("%u", &populacao1);
-    printf("Area (km²): ");
+    printf("Area (km): ");
     scanf("%f", &area1);
     printf("PIB (bilhoes de reais): ");
     scanf("%f", &pib1);
@@ -44,11 +43,10 @@ int main() {
     printf("Codigo da Carta (ex: A01): ");
     scanf("%s", codigo2);
     printf("Nome da Cidade: ");
-    getchar();
-    fgets(cidade2, 100, stdin);
+    scanf("%s", cidade2);
     printf("Populacao: ");
     scanf("%u", &populacao2);
-    printf("Area (km²): ");
+    printf("Area (km): ");
     scanf("%f", &area2);
     printf("PIB (bilhoes de reais): ");
     scanf("%f", &pib2);
@@ -65,17 +63,58 @@ int main() {
     super_poder2 = populacao2 + area2 + (pib2 * 1000000000) + pontos_turisticos2 + pib_per_capita2 + (1 / densidade_populacional2);
     
     // Exibição dos Resultados
-    printf("\nComparacao de Cartas:\n");
-    printf("Populacao: Carta %d venceu\n", (populacao1 > populacao2) ? 1 : 2);
-    printf("Area: Carta %d venceu\n", (area1 > area2) ? 1 : 2);
-    printf("PIB: Carta %d venceu\n", (pib1 > pib2) ? 1 : 2);
-    printf("Pontos Turisticos: Carta %d venceu\n", (pontos_turisticos1 > pontos_turisticos2) ? 1 : 2);
-    printf("Densidade Populacional: Carta %d venceu\n", (densidade_populacional1 < densidade_populacional2) ? 1 : 2);
-    printf("PIB per Capita: Carta %d venceu\n", (pib_per_capita1 > pib_per_capita2) ? 1 : 2);
-    printf("Super Poder: Carta %d venceu\n", (super_poder1 > super_poder2) ? 1 : 2);
+    printf("\n=== COMPARACAO DE CARTAS ===\n");
+    
+    printf("Populacao: ");
+    if (populacao1 > populacao2) {
+        printf("Carta 1 venceu! (%lu vs %lu)\n", populacao1, populacao2);
+    } else {
+        printf("Carta 2 venceu! (%lu vs %lu)\n", populacao2, populacao1);
+    }
+    
+    printf("Area: ");
+    if (area1 > area2) {
+        printf("Carta 1 venceu! (%.2f km vs %.2f km)\n", area1, area2);
+    } else {
+        printf("Carta 2 venceu! (%.2f km vs %.2f km)\n", area2, area1);
+    }
+    
+    printf("PIB: ");
+    if (pib1 > pib2) {
+        printf("Carta 1 venceu! (%.2f bi vs %.2f bi)\n", pib1, pib2);
+    } else {
+        printf("Carta 2 venceu! (%.2f bi vs %.2f bi)\n", pib2, pib1);
+    }
+    
+    printf("Pontos Turisticos: ");
+    if (pontos_turisticos1 > pontos_turisticos2) {
+        printf("Carta 1 venceu! (%d vs %d)\n", pontos_turisticos1, pontos_turisticos2);
+    } else {
+        printf("Carta 2 venceu! (%d vs %d)\n", pontos_turisticos2, pontos_turisticos1);
+    }
+    
+    printf("Densidade Populacional: ");
+    if (densidade_populacional1 < densidade_populacional2) {
+        printf("Carta 1 venceu! (%.2f hab/km vs %.2f hab/km)\n", densidade_populacional1, densidade_populacional2);
+    } else {
+        printf("Carta 2 venceu! (%.2f hab/km vs %.2f hab/km)\n", densidade_populacional2, densidade_populacional1);
+    }
+    
+    printf("PIB per Capita: ");
+    if (pib_per_capita1 > pib_per_capita2) {
+        printf("Carta 1 venceu! (%.2f vs %.2f)\n", pib_per_capita1, pib_per_capita2);
+    } else {
+        printf("Carta 2 venceu! (%.2f vs %.2f)\n", pib_per_capita2, pib_per_capita1);
+    }
+    
+    printf("Super Poder: ");
+    if (super_poder1 > super_poder2) {
+        printf("Carta 1 venceu! (%.2f vs %.2f)\n", super_poder1, super_poder2);
+    } else {
+        printf("Carta 2 venceu! (%.2f vs %.2f)\n", super_poder2, super_poder1);
+    }
     
     return 0;
 }
-// OBS: Tive que usar o "fgets" e o "getchar" porque estava dando problemas no meu comando.
-// Eu pesquisei e a soluçao era os espaços (ENTER) e entao eu usei para ficar mais bonito e funcional.
-// Para resumir quando chegava em cidade, o codigo se bagunçava inteiro. EX: população se misturava com o codigo, area, PIB, pontos.
+
+//Esramos no NIvel 2 e estamos usando agora o "ELSE" e "IF", agora comparando as cartas!!!
